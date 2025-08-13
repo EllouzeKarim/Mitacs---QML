@@ -1,0 +1,149 @@
+"""
+Inference script for predicting malignancy of lung nodules
+"""
+import numpy as np
+import dataloader
+import torch
+import torch.nn as nn
+from torchvision import models
+from models.model_3d import I3D
+from models.model_2d import ResNet18
+import os
+import math
+import logging
+
+from models.model_unet3d import UNet3D
+from models.model_cnn3d import Efficient3DCNN
+from models.model_resnet3d import BasicBlock3D, ResNet3D
+from models.model_unet2d import UNet2D
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="[%(levelname)s][%(asctime)s] %(message)s",
+    datefmt="%I:%M:%S",
+)
+
+# define processor
+class MalignancyProcessor:
+    """
+    Loads a chest CT scan, and predicts the malignancy around a nodule
+    """
+
+    def __init__(self, mode="2D", suppress_logs=False, model_name="LUNA25-baseline-2D"):
+
+        self.size_px = 64
+        self.size_mm = 50
+
+        self.model_name = model_name
+        self.mode = mode
+        self.suppress_logs = suppress_logs
+
+        if not self.suppress_logs:
+            logging.info("Initializing the deep learning system")
+
+        if self.mode == "2D":
+            self.model = ResNet18(weights=None).cuda()
+
+        elif self.mode == "UNET2D":
+            self.model = UNet2D().cuda()
+
+        elif self.mode == "3D":
+            self.model = I3D(num_classes=1, pre_trained=False, input_channels=3).cuda()
+
+        elif self.mode == "3DCNN":
+            self.model = Efficient3DCNN().cuda()
+
+        elif self.mode == "UNET3D":
+            self.model = UNet3D(in_channels=1, num_classes=1).cuda()
+
+        elif self.mode == "ResNet3D":
+            print(f"Using standalone 3D ResNet-{self.resnet_depth} model.")
+            if self.resnet_depth == 18: layers = [2, 2, 2, 2]
+            elif self.resnet_depth == 34: layers = [3, 4, 6, 3]
+            else: raise ValueError("Unsupported depth.")
+            self.model = ResNet3D(
+                block=BasicBlock3D,
+                layers=layers,
+                in_channels=self.in_channels,
+                num_classes=1
+            ).cuda()
+
+        else:
+            raise ValueError(f"Unsupported mode: {self.mode}")
+
+
+        self.model_root = "/opt/app/resources/"
+
+    def define_inputs(self, image, header, coords):
+        self.image = image
+        self.header = header
+        self.coords = coords
+
+    def extract_patch(self, coord, output_shape, mode):
+
+        patch = dataloader.extract_patch(
+            CTData=self.image,
+            coord=coord,
+            srcVoxelOrigin=self.header["origin"],
+            srcWorldMatrix=self.header["transform"],
+            srcVoxelSpacing=self.header["spacing"],
+            output_shape=output_shape,
+            voxel_spacing=(
+                self.size_mm / self.size_px,
+                self.size_mm / self.size_px,
+                self.size_mm / self.size_px,
+            ),
+            coord_space_world=True,
+            mode=mode,
+        )
+
+        # ensure same datatype...
+        patch = patch.astype(np.float32)
+
+        # clip and scale...
+        patch = dataloader.clip_and_scale(patch)
+        return patch
+
+    def _process_model(self, mode):
+
+        if not self.suppress_logs:
+            logging.info("Processing in " + mode)
+
+        if mode == "2D":
+            output_shape = [1, self.size_px, self.size_px]
+            model = self.model_2d
+        else:
+            output_shape = [self.size_px, self.size_px, self.size_px]
+            model = self.model_3d
+
+        nodules = []
+
+        for _coord in self.coords:
+
+            patch = self.extract_patch(_coord, output_shape, mode=mode)
+            nodules.append(patch)
+
+        nodules = np.array(nodules)
+        nodules = torch.from_numpy(nodules).cuda()
+
+        ckpt = torch.load(
+            os.path.join(
+                self.model_root,
+                self.model_name,
+                "best_metric_model.pth",
+            )
+        )
+        model.load_state_dict(ckpt)
+        model.eval()
+        logits = model(nodules)
+        logits = logits.data.cpu().numpy()
+
+        logits = np.array(logits)
+        return logits
+
+    def predict(self):
+
+        logits = self._process_model(self.mode)
+
+        probability = torch.sigmoid(torch.from_numpy(logits)).numpy()
+        return probability, logits

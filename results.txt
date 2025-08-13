@@ -1,0 +1,117 @@
+CLASSIC :
+
+
+Basic 2d (ResNET 18) :
+
+	Experience 1 : 10 epochs
+
+	[INFO][09:43:16] train completed, best_metric: 0.9403 at epoch: 10
+
+Basic 3d (I3D) :
+
+	Experience 1 :  10 epochs
+
+	[INFO][09:52:46] train completed, best_metric: 0.9331 at epoch: 5
+
+UNET2D :
+
+	Experience 1 : 10 epochs
+
+	[INFO][10:51:07] train completed, best_metric: 0.8949 at epoch: 9
+
+
+UNET3D :
+
+	Experience 1 : 10 epochs
+
+	[INFO][10:16:19] train completed, best_metric: 0.9184 at epoch: 10
+
+
+3DCNN :
+
+	Experience 1 : 10 epochs
+
+	[INFO][10:28:56] train completed, best_metric: 0.9110 at epoch: 10
+
+ResNet3D depth 18 :
+
+	Experience 1 : 10 epochs
+
+	[INFO][08:52:22] train completed, best_metric: 0.9189 at epoch: 10
+
+ResNet3D depth 34 :
+
+	Experience 1 : 10 epochs
+
+	[INFO][09:33:30] train completed, best_metric: 0.9215 at epoch: 7
+
+INCEPTION :
+
+	Experience 1 : 10 epochs
+
+	[INFO][02:55:53] train completed, best_metric: 0.9351 at epoch: 9
+-------------------------------------------------------------------------------------------------------------------------------------------------
+QUANTUM :
+
+QKernel :
+
+	Experience 1 : 10 epochs
+ 
+
+
+QNN :
+
+	Experience 1 : 10 epochs
+	
+	[INFO][11:29:29] train completed, best_metric: 0.5644 at epoch: 3
+	[INFO][03:57:54] train completed, best_metric: 0.6544 at epoch: 3
+
+
+AdvancedQNN :
+
+	Experience 1 : 10 epochs
+
+	[INFO][11:08:05] train completed, best_metric: 0.4791 at epoch: 8
+	[INFO][04:11:09] train completed, best_metric: 0.5167 at epoch: 6
+ 
+UNet3DWithQPF:
+
+	Experience 1 : 10 epochs
+	[INFO][10:46:25] train completed, best_metric: 0.9233 at epoch: 9
+
+
+RESNET3D_18_WithQPF:
+
+	Experience 1 : 10 epochs
+	[INFO][02:21:20] train completed, best_metric: 0.9315 at epoch: 9
+
+
+RESNET3D_34_WithQPF:
+
+	Experience 1 : 10 epochs
+	[INFO][02:39:11] train completed, best_metric: 0.9213 at epoch: 5
+
+3DCNNWithQPF:
+
+	Experience 1 : 10 epochs
+
+	[INFO][02:02:20] train completed, best_metric: 0.9170 at epoch: 9
+
+InceptionWithQPF:
+
+	Experience 1 : 10 epochs
+
+
+QiskitPQC :
+
+	Experience 1 : 10 epochs
+
+	[INFO][04:03:18] train completed, best_metric: 0.4731 at epoch: 10
+
+VQC :
+	Experience 1 : 10 epochs
+
+	[INFO][10:54:13] train completed, best_metric: 0.5150 at epoch: 1
+	[INFO][04:22:44] train completed, best_metric: 0.5379 at epoch: 9
+
+
