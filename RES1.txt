@@ -1,0 +1,137 @@
+------------------------------------------------------------CNN 3D------------------------------------------------------------------------
+
+10 epochs : 
+
+[INFO][04:01:13] train completed, best_metric: 0.9125 at epoch 10
+
+20 epochs : 
+
+[INFO][04:28:15] train completed, best_metric: 0.9312 at epoch: 14
+-------------------------------------------------------------------------------------------------------------------------------------------
+10 epochs : 
+nb qubits ;
+8 : [INFO][12:55:10] train completed, best_metric: 0.9155 at epoch: 9
+12 : [INFO][01:15:03] train completed, best_metric: 0.9161 at epoch: 10
+16 : [INFO][01:34:42] train completed, best_metric: 0.9165 at epoch: 9
+20 : [INFO][01:55:15] train completed, best_metric: 0.9186 at epoch: 9  
+24 : [INFO][02:16:41] train completed, best_metric: 0.9170 at epoch: 9
+
+
+20 epochs : 
+20 : [INFO][02:54:34] train completed, best_metric: 0.9272 at epoch: 17
+
+------------------------------------------------------------I3D------------------------------------------------------------------------
+
+10 epochs : 
+
+[INFO][04:30:14] train completed, best_metric: 0.9366 at epoch 5
+
+20 epochs : 
+
+[INFO][04:42:41] train completed, best_metric: 0.9496 at epoch: 14
+-------------------------------------------------------------------------------------------------------------------------------------------
+10 epochs : 
+nb qubits ;
+4 : [INFO][01:00:16] train completed, best_metric: 0.9452 at epoch: 9
+8 : [INFO][01:18:49] train completed, best_metric: 0.9456 at epoch: 10
+12 : [INFO][01:39:46] train completed, best_metric: 0.9425 at epoch: 9
+16 : [INFO][02:06:53] train completed, best_metric: 0.9507 at epoch: 10
+20 : [INFO][04:47:54] train completed, best_metric: 0.9475 at epoch 9  
+24 :  [INFO][02:24:41] train completed, best_metric: 0.9448 at epoch: 9
+
+
+20 epochs : 
+20 : [INFO][05:04:12] train completed, best_metric: 0.9515 at epoch: 14
+
+------------------------------------------------------------InceptionV3------------------------------------------------------------------------
+
+10 epochs : 
+
+[INFO][04:38:15] train completed, best_metric: 0.9410 at epoch 10
+
+
+20 epochs : 
+
+  [INFO][04:49:42] train completed, best_metric: 0.9427 at epoch: 19
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+10 epochs : 
+nb qubits ;
+4 :[INFO][10:13:54] train completed, best_metric: 0.9211 at epoch: 6
+8 :[INFO][10:33:16] train completed, best_metric: 0.9132 at epoch: 10
+12 :[INFO][11:51:29] train completed, best_metric: 0.9273 at epoch: 6
+16 : [INFO][04:20:12] train completed, best_metric: 0.9265 at epoch: 10
+20 : [INFO][03:42:06] train completed, best_metric: 0.9198 at epoch: 6
+24 :[INFO][04:01:17] train completed, best_metric: 0.9195 at epoch: 10 
+
+
+20 epochs : 
+20 : [INFO][10:12:32] train completed, best_metric: 0.9291 at epoch: 14
+
+------------------------------------------------------------UNET3D------------------------------------------------------------------------
+
+10 epochs : 
+
+[INFO][10:36:39] train completed, best_metric: 0.9229 at epoch 8
+
+
+20 epochs : 
+
+[INFO][10:59:00] train completed, best_metric: 0.9336 at epoch: 18
+-------------------------------------------------------------------------------------------------------------------------------------------
+10 epochs : 
+nb qubits ;
+4 :[INFO][02:26:36] train completed, best_metric: 0.9015 at epoch: 9
+8 :[INFO][05:32:49] train completed, best_metric: 0.9081 at epoch: 10
+12 :[INFO][02:19:43] train completed, best_metric: 0.9263 at epoch: 10
+16 : [INFO][02:48:11] train completed, best_metric: 0.9189 at epoch: 9
+20 : [INFO][03:43:00] train completed, best_metric: 0.9185 at epoch: 9
+24 :[INFO][04:29:52] train completed, best_metric: 0.9134 at epoch: 7
+
+20 epochs : 
+20 : 
+
+------------------------------------------------------------Resnet 3d  34----------------------------------------------------------------------
+
+10 epochs : 
+
+[INFO][06:50:08] train completed, best_metric: 0.9174 at epoch 10
+
+
+20 epochs : 
+
+[INFO][07:09:17] train completed, best_metric: 0.9269 at epoch: 18
+-------------------------------------------------------------------------------------------------------------------------------------------
+10 epochs : 
+nb qubits ;
+4 :[INFO][09:01:30] train completed, best_metric: 0.9271 at epoch 10
+8 :[INFO][04:15:20] train completed, best_metric: 0.9260 at epoch: 10
+12 :[INFO][09:35:40] train completed, best_metric: 0.9308 at epoch: 10
+16 : [INFO][09:52:09] train completed, best_metric: 0.9185 at epoch: 6  
+20 : [INFO][10:08:10] train completed, best_metric: 0.9230 at epoch: 10
+24 :[INFO][10:30:38] train completed, best_metric: 0.9296 at epoch: 5
+
+20 epochs : 
+20 : [INFO][03:23:11] train completed, best_metric: 0.9350 at epoch: 20
+
+
+------------------------------------------------------------Resnet 3d  18----------------------------------------------------------------------
+
+10 epochs : 
+
+[INFO][01:01:48] train completed, best_metric: 0.9214 at epoch 5
+
+20 epochs : 
+[INFO][01:12:36] train completed, best_metric: 0.9297 at epoch: 12
+-------------------------------------------------------------------------------------------------------------------------------------------
+10 epochs : 
+nb qubits ;
+4 :[INFO][10:51:18] train completed, best_metric: 0.9245 at epoch: 10
+8 :[INFO][09:17:03] train completed, best_metric: 0.9246 at epoch: 10
+12 :[INFO][09:38:23] train completed, best_metric: 0.9267 at epoch: 9
+16 : [INFO][09:58:25] train completed, best_metric: 0.9283 at epoch: 4  
+20 : [INFO][10:15:44] train completed, best_metric: 0.9277 at epoch: 8
+24 :[INFO][11:47:38] train completed, best_metric: 0.9205 at epoch: 9
+
+20 epochs : 
+20 : [INFO][12:21:58] train completed, best_metric: 0.9309 at epoch: 16
